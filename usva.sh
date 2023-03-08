@@ -11,7 +11,7 @@ upload() {
     out=$(curl -F "file=@$1" $CURL_FLAGS "$USVA_INSTANCE/file/upload")
     file=$(echo "$out" | jq -r ".filename")
     if [ $? -eq 0 ]; then
-        echo "$USVA_INSTANCE/file/?filename=$file"
+        echo "$file"
     else
         echo "upload failed: $(echo $out | jq -r '.error')"
     fi
